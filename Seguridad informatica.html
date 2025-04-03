@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad Informática</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Fuentes y colores */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f1f1;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Título en el centro */
+        header {
+            background: #1abc9c;
+            color: white;
+            padding: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center; /* Centrado del título */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Menú lateral */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Oculto por defecto */
+            width: 250px;
+            height: 100%;
+            background-color: #34495e;
+            color: white;
+            padding-top: 20px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.4);
+            overflow-y: auto;
+        }
+
+        .side-menu.open {
+            left: 0; /* Menú abierto */
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .side-menu ul li {
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .side-menu ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 15px;
+            display: block;
+            background-color: #16a085;
+            border-radius: 8px;
+            margin: 10px 0;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .side-menu ul li a:hover {
+            background-color: #1abc9c;
+            transform: scale(1.05);
+        }
+
+        /* Botón de menú */
+        .menu-btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background 0.3s ease;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            border-radius: 8px;
+        }
+
+        .menu-btn:hover {
+            background-color: #34495e;
+        }
+
+        /* Contenido principal centrado */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto; /* Centrado */
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+        }
+
+        .container h2 {
+            color: #2980b9;
+            font-size: 26px;
+            border-bottom: 3px solid #16a085;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .container p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #34495e;
+        }
+
+        /* Estilo para los enlaces de navegación */
+        a {
+            text-decoration: none;
+            color: #16a085;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1abc9c;
+        }
+
+        /* Estilo del fondo y el menú lateral */
+        .container, header {
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Botón de cierre del menú */
+        .close-btn {
+            background-color: transparent;
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Evitar que el botón de menú se sobreponga al contenido */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+        }
+    </style>
+</head>
+<body>
+    <header>Seguridad Informática</header>
+
+    <!-- Botón para abrir/cerrar el menú -->
+    <button class="menu-btn" onclick="toggleMenu()">☰ Investigaciones</button>
+
+    <!-- Menú lateral (side menu) -->
+    <div id="sideMenu" class="side-menu">
+        <button class="close-btn" onclick="toggleMenu()">×</button> <!-- Botón para cerrar -->
+        <ul>
+            <li><a href="#conceptos">Conceptos Básicos</a></li>
+            <li><a href="#amenazas">Tipos de Amenazas</a></li>
+            <li><a href="#practicas">Buenas Prácticas</a></li>
+            <li><a href="#privacidad">Privacidad y Protección de Datos</a></li>
+            <li><a href="#virus">Virus y Tipos de Virus</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2 id="conceptos">Conceptos básicos de seguridad informática</h2>
+        <div class="image-container">
+            <img src="https://www.ucatalunya.edu.co/img/blog/seguridad-informatica-la-importancia-y-lo-que-debe-saber.jpg" alt="Seguridad Informática">
+        </div>
+        <p>La seguridad informática protege sistemas, redes y datos de ataques digitales. Estos pueden incluir acceso no autorizado, malwares, daños en equipos, pérdida de información, entre otros. La protección abarca tanto medidas preventivas como reactivas. La protección digital de las empresas y usuarios finales es crucial para garantizar la confidencialidad, integridad y disponibilidad de la información.</p>
+        
+        <h2 id="amenazas">Tipos de amenazas</h2>
+        <div class="image-container">
+            <img src="https://arrobasystem.com/cdn/shop/articles/que-son-las-amenazas-informaticas-y-como-protegerte-de-ellas_1024x768.jpg?v=1612459695" alt="Amenazas de seguridad">
+        </div>
+        <ul>
+            <li><strong>Malware:</strong> Es un software diseñado para dañar o explotar los recursos de un sistema. Incluye virus, troyanos, spyware, y ransomware.</li>
+            <li><strong>Phishing:</strong> Técnica que utiliza correos electrónicos fraudulentos, sitios web falsificados o mensajes engañosos para obtener información personal, como contraseñas o números de tarjetas.</li>
+            <li><strong>Ransomware:</strong> Un tipo de malware que cifra los archivos de un sistema y exige un rescate para liberar el acceso a los datos.</li>
+        </ul>
+        
+        <h2 id="practicas">Buenas prácticas de seguridad</h2>
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnL2AxGdpZKizIBcwG_5_MsXwfYWfKT4DJaA&s" alt="Buenas prácticas">
+        </div>
+        <ul>
+            <li><strong>Contraseñas seguras:</strong> Utiliza contraseñas largas, complejas y únicas para cada cuenta, combinando letras, números y caracteres especiales.</li>
+            <li><strong>Actualizaciones constantes:</strong> Asegúrate de mantener tu sistema operativo y programas actualizados. Las actualizaciones suelen corregir vulnerabilidades de seguridad.</li>
+            <li><strong>Uso de antivirus:</strong> Instala y actualiza regularmente software antivirus para detectar y eliminar malware antes de que cause daños.</li>
+        </ul>
+        
+        <h2 id="privacidad">Privacidad y protección de datos personales</h2>
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs8r-O7SuBjThVoVFZApsMkeWVFuNPdHQc8Q&s" alt="Privacidad">
+        </div>
+        <p>La privacidad de los datos personales es fundamental en un entorno digital. Protege tu información personal utilizando técnicas como la encriptación y asegurándote de no compartir datos sensibles sin necesidad. Además, revisa la política de privacidad de los servicios que utilizas para saber cómo se maneja tu información.</p>
+        
+        <h2 id="virus">Virus y tipos de virus</h2>
+        <div class="image-container">
+            <img src="https://www.avast.com/hs-fs/hubfs/New_Avast_Academy/what_is_malware_academy_refresh/Types-of-Malware-ES.png?width=664&height=474&name=Types-of-Malware-ES.png" alt="Virus informáticos">
+        </div>
+        <ul>
+            <li><strong>Virus de Boot:</strong> Afectan el sector de arranque del dispositivo, lo que impide que el sistema operativo se cargue correctamente.</li>
+            <li><strong>Gusanos:</strong> Se propagan a través de redes, replicándose a sí mismos sin necesidad de un archivo huésped.</li>
+            <li><strong>Troyanos:</strong> Malware que parece un programa legítimo pero permite el acceso no autorizado al sistema.</li>
+            <li><strong>Spyware:</strong> Software que recopila información del usuario sin su conocimiento o consentimiento.</li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var sideMenu = document.getElementById('sideMenu');
+            sideMenu.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
